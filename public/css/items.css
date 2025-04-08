@@ -1,0 +1,109 @@
+html {
+    background-color: #1C2227;
+}
+
+main {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+}
+
+h1 {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#items-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    margin: 20px;
+    margin-bottom: 100px;
+}
+
+
+#items-container section {
+    border-radius: 5px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.items {
+    background-color: #21333B;
+    transition: transform 0.3s ease;
+}
+
+.items:hover {
+    border: 2px solid white;
+    transform: scale(1.05);
+}
+
+#items-container section img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px 5px 0px 0px;
+}
+
+#items-container section p {
+    margin: 10px 10px 10px 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+#items-container section a {
+    text-decoration: none;
+    color: black;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.condition {
+    font-size: 0.9rem;
+    color: #A8ADAD;
+}
+
+hr {
+    color: #8F8F8F;
+    width: 87%;
+}
+
+#items-container .items .price-offers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #88B2D5
+}
+
+.offers {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #E1F9FB;
+}
+
+.no-items {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+}

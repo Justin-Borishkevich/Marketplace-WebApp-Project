@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+    <main>
+        <h1>Our Selection Of items</h1>
+        <section id="items-container">
+            <%if(items.length) {%>
+                <% items.forEach(item => { %>
+                    <section class="items">
+                        <a href="/store/<%= item.id %>">
+                            <img src="<%= item.image %>" alt="dumbbell">
+                            <p class="title"><%= item.title %></p>
+                            <p class="condition"><%= item.condition %></p>
+                            <hr>
+                            <section class="price-offers">
+                                <p class="price">Price: $<%= item.price %></p>
+                                <p class="offers">Offers: <%= item.offers %></p>
+                            </section>
+                        </a>
+                    </section>
+                <% }) %>
+            <%} else {%>
+                <p class = "no-items">No items found</p>
+            <%}%>
+        </section>
+    </main>
+<%- include('../partials/footer') %>
+
