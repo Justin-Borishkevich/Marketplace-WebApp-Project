@@ -4,27 +4,26 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const storeRoutes = require('./routes/storeRoutes');
-const { MongoClient } = require('mongodb');
-const { getCollection } = require('./models/item');
 
 //create app
 const app = express();
 
-//configure app
-let port = 3000;
-let host = 'localhost';
+// Configure app
+const port = process.env.PORT || 3000; // Use Render's assigned port
 app.set('view engine', 'ejs');
-const mongUri = 'mongodb+srv://admin:admin1234$@cluster0.aj2fr.mongodb.net/Store?retryWrites=true&w=majority&appName=Cluster0';
 
-//connect to Mongodb
+// MongoDB connection URI from environment variable
+const mongUri = process.env.MONGO_URI;
+
+// Connect to MongoDB
 mongoose.connect(mongUri)
-.then(() => {
-    //start server
-    app.listen(port, host, () => {
-        console.log(`Server is running on http://${host}:${port}`);
+    .then(() => {
+        // Start server
+        app.listen(port, '0.0.0.0', () => {
+            console.log(`Server is running on port ${port}`);
+        });
     })
-})
-.catch(err=>console.log(err));
+    .catch(err => console.log(err));
 
 
 //mount middleware
