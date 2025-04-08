@@ -1,7 +1,7 @@
 const express = require('express');
+const router = express.Router();
 const controller = require('../controllers/storeController');
 const { upload } = require('../middleware/fileUpload');
-const router = express.Router();
 
 //GET /store home
 router.get('/', controller.index);

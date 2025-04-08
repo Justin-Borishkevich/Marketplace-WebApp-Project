@@ -1,25 +1,33 @@
-const model = require('../models/item');
+const Item = require('../models/item');
+const { cloudinary } = require('../config/cloudinary');
 
+// GET / store - show all items
 exports.index = async (req, res, next) => {
     try {
-        const items = await model.find();
+        const items = await Item.find();
         res.render('./store/index', { items, extraStyles: '/css/index.css' });
     } catch (err) {
         next(err);
     }
 }
 
+// GET / store/new - show new item form
 exports.new = (req, res) => {
     res.render('./store/new', {extraStyles: '/css/new.css'});
 }
 
+//POST / store - create new item with image
 exports.create = async (req, res, next) => {
     try {
-        const item = new model(req.body);
-
-        if (req.file) {
-            item.image = `/images/${req.file.filename}`;
+        // Validate that an image was uploaded
+        if (!req.file) {
+            throw new Error('Please upload an image.');
         }
+
+        const item = new Item({
+            ...req.body,
+            image: req.file.path // Cloudinary URL
+        })
 
         await item.save();
         res.redirect('/store/items');
@@ -32,6 +40,7 @@ exports.create = async (req, res, next) => {
     }
 }
 
+//GET / store/:id - show specific item
 exports.show = async (req, res, next) => {
     try {
         let id = req.params.id;
@@ -42,7 +51,7 @@ exports.show = async (req, res, next) => {
             throw err;
         }
 
-        let item = await model.findById(id);
+        let item = await Item.findById(id);
 
         if(!item){
             let err = new Error(`Item with id "${id}" not found`);
@@ -57,6 +66,7 @@ exports.show = async (req, res, next) => {
     }
 };
 
+//GET / store/:id/edit - Render edit item form
 exports.edit = async (req, res, next) => {
     try {
         let id = req.params.id;
@@ -67,7 +77,7 @@ exports.edit = async (req, res, next) => {
             throw err;
         }
 
-        let item = await model.findById(id);
+        let item = await Item.findById(id);
 
         if(!item){
             let err = new Error(`Item with id ${id} not found`);
@@ -82,9 +92,9 @@ exports.edit = async (req, res, next) => {
     }
 }
 
+//PUT / store/:id - Update item
 exports.update = async (req, res, next) => {
     try {
-        let item = req.body;
         let id = req.params.id;
 
         if(!id.match(/^[0-9a-fA-F]{24}$/)){
@@ -93,17 +103,25 @@ exports.update = async (req, res, next) => {
             throw err;
         }
 
-        let updatedItem = await model.findByIdAndUpdate(id, item, {
-            useFindAndModify: false, 
-            runValidators: true
-        });
+        let item = await Item.findById(id);
 
-        if(!updatedItem){
+        if(!item){
             let err = new Error(`Item with id ${id} not found`);
             err.status = 404;
             throw err;
         }
 
+        // Update fields from req.body
+        item.set(req.body);
+
+        // If a new image is uploaded, delete the old image from Cloudinary and upload the new one
+        if (req.file) {
+            const oldImagePublicId = item.image.split('/').slice(-2).join('/').split('.')[0];
+            await cloudinary.uploader.destroy(oldImagePublicId);
+            item.image = req.file.path;
+        }
+
+        await item.save();
         res.redirect(`/store/${id}`);
 
     } catch (err) {
@@ -111,9 +129,10 @@ exports.update = async (req, res, next) => {
             err.status = 400;
         }
         next(err);
-    } 
+    }
 }
 
+//DELETE / store/:id - Delete item and its image
 exports.delete = async (req, res, next) => {
     try {
         let id = req.params.id;
@@ -124,22 +143,27 @@ exports.delete = async (req, res, next) => {
             throw err;
         }
 
-        const item = await model.findByIdAndDelete(id);
-        
+        const item = await Item.findById(id);        
         if (!item) {
             let err = new Error(`Item with id ${id} not found`);
             err.status = 404;
             throw err;
         }
+        
+        // Delete image from Cloudinary
+        const imagePublicId = item.image.split('/').slice(-2).join('/').split('.')[0];
+        await cloudinary.uploader.destroy(imagePublicId);
 
+        // Delete item from database
+        await item.deleteOne();
         res.redirect('/store/items');
 
     } catch (err) {
         next(err);
     }
-
 }
 
+//GET / store/items - show all items with optional search
 exports.items = async (req, res, next) => {
     try {
         const searchQuery = req.query.search || '';
@@ -153,7 +177,7 @@ exports.items = async (req, res, next) => {
             ];
         }
 
-        let items = await model.find(filter).sort({ price: 1});
+        let items = await Item.find(filter).sort({ price: 1});
 
         res.render('./store/items', { items, extraStyles: '/css/items.css' });
     } catch (err) {
