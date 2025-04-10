@@ -17,7 +17,14 @@ const storage = new CloudinaryStorage({
         allowed_formats: ['jpg', 'png', 'jpeg', 'gif'], // Allowed file types
         // Optional: Configure image transformations for file size reduction
         transformation: [
-            { width: 800, height: 800, crop: 'limit', quality: 'auto', fetch_format: 'auto' }
+            {     
+                width: 800,
+                height: 800,
+                crop: 'fill',
+                gravity: 'auto',
+                quality: 'auto',
+                fetch_format: 'auto' 
+            }
         ]
     }
 });

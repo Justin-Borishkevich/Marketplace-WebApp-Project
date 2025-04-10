@@ -22,8 +22,13 @@ h1 {
     color: #E1FAFF;
 }
 
+#item-info {
+    max-width: 50%;
+}
+
 #item-info p {
     font-size: 1rem;
+    line-height: 1.5;
     color: #E1FAFF;
 }
 
