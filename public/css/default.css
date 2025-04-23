@@ -243,6 +243,8 @@ h2 {
     padding: 0.5rem 0;
 }
 
+.desktop-only { display: inline; }
+
 @media (max-width: 768px) {
     html, body {
         overflow-x: hidden;
@@ -301,6 +303,7 @@ h2 {
     
     header input {
         margin-right: 5px;
+        width: 120px;
     }
     
     #home section {
@@ -308,15 +311,18 @@ h2 {
     }
     
     h2 {
-        font-size: 2.2em;
+        font-size: 2em;
     }
     
     #home section p {
         font-size: 1.40em;
         width: 90%;
+        text-align: center;
     }
 
-    
+    .desktop-only {
+        font-size: none; 
+    }
 }
 
 @media (max-width: 1410px) and (min-width: 768px) {

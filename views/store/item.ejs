@@ -3,10 +3,12 @@
         <img id="item-image" src="<%= item.image %>" alt="item.image">
         <section id="item-info">
             <h1><%= item.title %></h1>
-            <p>Condition: <span id="condition"><%= item.condition %></span></p>
-            <p>Price: <span id="price">$<%= item.price %></span> | <span id="offers"><%= item.offers %></span> Offers</p>
-            <p>Seller: <span id="seller"><%= item.seller.firstName + ' ' + item.seller.lastName%></span></p>
-            <p><%= item.description %></p>
+            <section id="description">
+                <p>Price: <span id="price">$<%= item.price %></span> | <span id="offers"><%= item.offers %></span> Offers</p>
+                <p>Seller: <span id="seller"><%= item.seller.firstName + ' ' + item.seller.lastName%></span></p>
+                <p>Condition: <span id="condition"><%= item.condition %></span></p>
+                <p><%= item.description %></p>
+            </section>
         </section>
     </div>
 </main>

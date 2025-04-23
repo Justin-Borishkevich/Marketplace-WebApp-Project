@@ -9,11 +9,13 @@
                                 <img src="<%= item.image %>" alt="dumbbell">
                             </div>
                             <p class="title"><%= item.title %></p>
-                            <p class="condition"><%= item.condition %></p>
-                            <hr>
-                            <section class="price-offers">
-                                <p class="price">Price: $<%= item.price %></p>
-                                <p class="offers">Offers: <%= item.offers %></p>
+                            <section class="description">
+                                <p class="condition"><%= item.condition %></p>
+                                <hr>
+                                <section class="price-offers">
+                                    <p class="price"><span class="desktop-only">Price:</span> $<%= item.price %></p>
+                                    <p class="offers">Offers: <%= item.offers %></p>
+                                </section>
                             </section>
                         </a>
                     </section>
