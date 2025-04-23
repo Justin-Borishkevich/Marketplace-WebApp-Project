@@ -8,7 +8,7 @@ const itemSchema = new Schema({
     offers: {type: Number, default: 0},
     image: {type: String, required: [true, 'Image is required']},
     description: {type: String, required: [true, 'Description is required']},
-    seller: {type: String, required: [true, 'Seller is required']},
+    seller: {type: Schema.Types.ObjectId, ref: 'User'},
     isActive: {type: Boolean, default: true}
 })
 

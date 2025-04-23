@@ -1,12 +1,13 @@
 <%- include('../partials/header') %>
-    <main>
         <h1>Our Selection Of items</h1>
         <section id="items-container">
             <%if(items.length) {%>
                 <% items.forEach(item => { %>
                     <section class="items">
                         <a href="/store/<%= item.id %>">
-                            <img src="<%= item.image %>" alt="dumbbell">
+                            <div class="image-box">
+                                <img src="<%= item.image %>" alt="dumbbell">
+                            </div>
                             <p class="title"><%= item.title %></p>
                             <p class="condition"><%= item.condition %></p>
                             <hr>
