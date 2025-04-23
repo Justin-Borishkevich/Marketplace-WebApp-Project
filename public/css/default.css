@@ -6,8 +6,8 @@ html {
     background-color: #121212;
 }
 
-header > * {
-    margin: 0 15px;
+main {
+    margin-top: 100px;
 }
 
 header {
@@ -25,7 +25,7 @@ header {
 }
 
 header img {
-    width: 150px;
+    width: 100px;
     height: auto;
     margin-left: 20px;
 }
@@ -199,4 +199,23 @@ h2 {
     margin-top: 100px;
     font-size: 1.5em;
     color: chocolate;
+}
+
+.success {
+    background: rgba(108, 192, 112, 0.7);
+    color: #fff;
+    width: 70%;
+    margin: 0 auto 1rem auto;
+    text-align: center;
+    padding: 0.5rem 0;
+  
+}
+  
+.error {
+    background: rgba(255, 102, 51, 0.7);
+    color: #fff;
+    width: 70%;
+    margin: 0 auto 1rem auto;
+    text-align: center;
+    padding: 0.5rem 0;
 }

@@ -4,7 +4,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: top;
-    gap: 30px; 
+    gap: 20px;
     background-color: #012328;
     height: calc(100vh - 100px);
 }
@@ -13,11 +13,6 @@ h1 {
     font-weight: bold;
     font-size: 2.5rem;
     color: #D1E6F0;
-}
-
-main section {
-    color: #D1E6F0;
-    font-size: 1.5rem;
 }
 
 main form {
@@ -31,19 +26,6 @@ main form {
     min-width: 500px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-}
-
-main label {
-    flex: 1 1 150px;
-    margin-right: 10px;
-    white-space: nowrap;
-}
-
 main input {
     background-color: black;
     color: white;
@@ -54,28 +36,6 @@ main input {
     border-radius: 5px;
     outline: 2px solid gray;
     border: none;
-}
-
-main textarea {
-    box-sizing: border-box;
-    flex: 2 1 100%;
-    padding: 7px;
-    width: 100%;
-    border-radius: 5px;
-    border: gray solid 1px;
-    background-color: black;
-    color: white;
-}
-
-main select {
-    box-sizing: border-box;
-    flex: 2 1 100%;
-    padding: 7px;
-    width: 100%;
-    border-radius: 5px;
-    border: gray solid 1px;
-    background-color: black;
-    color: white;
 }
 
 main input[type="submit"] {
