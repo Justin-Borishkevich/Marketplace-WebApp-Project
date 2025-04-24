@@ -321,7 +321,7 @@ h2 {
     }
 
     .desktop-only {
-        font-size: none; 
+        font-size: 0; 
     }
 }
 

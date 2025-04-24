@@ -5,7 +5,7 @@ main {
     align-items: center;
     justify-content: top;
     gap: 30px; 
-    background-color: #012328;
+    background-color: #161a1c;
     height: calc(100vh - 100px);
 }
 
@@ -79,7 +79,7 @@ main select {
 }
 
 main input[type="submit"] {
-    background-color: #012328;
+    background-color: #161a1c;
     color: white;
     border-radius: 5px;
     padding: 10px 20px;
@@ -90,3 +90,32 @@ main input[type="submit"] {
     text-decoration: none;
 }
 
+@media (max-width: 768px) {
+    main {
+        gap: 0px; 
+    }
+
+    main section {
+        display: flex;
+        justify-content: center;
+        padding: 5px 0px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+        margin: 0px;
+        text-align: center;
+    }
+    
+    main form {
+        min-width: 80vw;
+    }
+    
+    .form-group {
+        display: block;
+        width: 100%;
+        margin: 0px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+}

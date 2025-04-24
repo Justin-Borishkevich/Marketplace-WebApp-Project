@@ -5,7 +5,7 @@ main {
     align-items: center;
     justify-content: top;
     gap: 20px;
-    background-color: #012328;
+    background-color: #161a1c;
     height: calc(100vh - 100px);
 }
 
@@ -39,7 +39,7 @@ main input {
 }
 
 main input[type="submit"] {
-    background-color: #012328;
+    background-color: #161a1c;
     color: white;
     border-radius: 5px;
     padding: 10px 20px;
@@ -48,5 +48,18 @@ main input[type="submit"] {
     font-weight: bold;
     border: none;
     text-decoration: none;
+}
+
+@media (max-width: 768px) {    
+    h1 {
+        font-size: 2em;
+    }
+    
+    main form {
+        gap: 15px;
+        padding: 20px;
+        border-radius: 5px;
+        min-width: 80vw;
+    }
 }
 
