@@ -245,7 +245,7 @@ h2 {
 
 .desktop-only { display: inline; }
 
-@media (max-width: 1410px) and (min-width: 840px) {
+@media (max-width: 1410px) and (min-width: 900px) {
     header img {
         width: 70px;
         margin-left: 0px;
@@ -259,7 +259,7 @@ h2 {
     }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 900px) {
     html, body {
         overflow-x: hidden;
     }

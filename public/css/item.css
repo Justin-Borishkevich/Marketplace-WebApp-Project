@@ -33,6 +33,10 @@ h1 {
     color: #E1FAFF;
 }
 
+#item-info {
+    max-width: 50%;
+}
+
 #condition, #price, #offers, #seller {
     font-weight: bold;
 }
@@ -44,6 +48,13 @@ h1 {
 
 a {
     text-decoration: none;
+}
+
+@media (max-width: 1220px) and (min-width: 768px) {
+    #item-image {
+        width: 40%;
+        margin-left: 10px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -106,6 +117,5 @@ a {
     }
 }
 
-@media (max-width: 1410px) and (min-width: 768px) {
-}
+
 
